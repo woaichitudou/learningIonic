@@ -1,3 +1,15 @@
-page-home {
+page-home {}
 
+.scroll-content {
+    padding: 0!important;
+}
+
+ion-slides {
+    width: 100%;
+    height: auto;
+}
+
+.swiper-pagination-bullet-active {
+    background: #ea6f5a!important;
+    opacity: 1;
 }
