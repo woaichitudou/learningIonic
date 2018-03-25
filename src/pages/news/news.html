@@ -1,16 +1,31 @@
 <ion-header>
 
     <ion-navbar>
-        <ion-title>新闻</ion-title>
+        <ion-title>趣图</ion-title>
     </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-    <ion-list>
-        <ion-item *ngFor="let item of list" (click)="goNewsDetails()">
-            {{item}}
-        </ion-item>
-    </ion-list>
+<ion-content padding class="card-background-page">
+
+    <ion-card *ngFor="let item of list">
+
+        <img src="{{item.url}}" />
+        <ion-card-content>
+            <ion-card-title>
+                {{item.content}}
+            </ion-card-title>
+            <p>
+                {{item.updatetime }}
+            </p>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+
+
 </ion-content>

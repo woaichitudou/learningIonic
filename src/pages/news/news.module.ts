@@ -5,6 +5,7 @@ import { NewsPage } from './news';
 
 
 
+
 @NgModule({
   declarations: [
     NewsPage,
