@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http, Jsonp } from '@angular/http';
-import { LoadingController } from 'ionic-angular';  
+import { LoadingController,Loading } from 'ionic-angular';  
 
 
 
@@ -27,7 +27,7 @@ export class NewsPage {
   public key: any ="&key=df9e9bea78793affbeae741896adf680"
   public page:any=1
   public pagesize: any ="&pagesize=10&page="
-  
+  public messageLoader:Loading
 
 
 
@@ -53,13 +53,18 @@ export class NewsPage {
 
 
   presentLoading() {
-    let loader = this.loadingCtrl.create({
+    this.messageLoader = this.loadingCtrl.create({
       content: "亲正在努力加载中...",
-      duration: 1000
+      // duration: 1000
     });
     // present(); 显示
-    loader.present();
+    this.messageLoader.present();
     
+    
+  }
+  destoryLoading(){
+    this.messageLoader.dismiss();
+
   }
 
 
@@ -68,7 +73,7 @@ export class NewsPage {
     this.jsonp.get(this.url + this.call + this.key + this.pagesize + this.page)
     .subscribe(
       function (data) {
-
+        _this.destoryLoading()
 
         let _data = data["_body"].result.data
 
